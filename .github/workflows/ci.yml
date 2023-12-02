@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: install python dependencies
+        run: python3 -m pip install -r requirements.txt
+
+      - name: run unit tester
+        run: python3 -m pytest
